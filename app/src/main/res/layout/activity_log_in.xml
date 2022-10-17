@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/back1"
-    tools:context=".MainActivity">
+    tools:context=".LogInActivity">
 
     <ImageView
-        android:id="@+id/logo"
+        android:id="@+id/logo2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/mydiary"
@@ -17,10 +17,10 @@
         />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/email_card"
+        android:id="@+id/email_card2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/logo"
+        android:layout_below="@id/logo2"
         android:layout_margin="30dp"
         android:backgroundTint="@color/white">
 
@@ -29,7 +29,7 @@
             android:layout_height="match_parent">
 
             <EditText
-                android:id="@+id/email_up"
+                android:id="@+id/email_in"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -45,10 +45,10 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/password_card"
+        android:id="@+id/password_card2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/email_card"
+        android:layout_below="@id/email_card2"
         android:layout_margin="30dp"
         android:backgroundTint="@color/white">
 
@@ -57,12 +57,12 @@
             android:layout_height="match_parent">
 
             <EditText
-                android:id="@+id/password_up"
+                android:id="@+id/password_in"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:fontFamily="@font/miniver"
-                android:hint="Set Password"
+                android:hint="Password"
                 android:inputType="textPassword"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
@@ -74,28 +74,15 @@
     </androidx.cardview.widget.CardView>
 
     <Button
-        android:id="@+id/signup_button"
+        android:id="@+id/login_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/password_card"
+        android:layout_below="@id/password_card2"
         android:layout_margin="30dp"
         android:backgroundTint="#0091EA"
         android:textColor="@color/white"
-        android:text="Create Account"
+        android:text="log in"
         android:textStyle="bold"
-        />
-
-    <TextView
-        android:id="@+id/send_to_logIN"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:textStyle="bold"
-        android:textColor="@color/purple_500"
-        android:text="Already have an Account? Log IN"
-        android:layout_below="@id/signup_button"
-        android:layout_centerHorizontal="true"
-        android:textSize="18dp"
         />
 
 </RelativeLayout>
