@@ -13,7 +13,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.gigawattstechnology.mydiary.databinding.FragmentGalleryBinding;
 
 public class GalleryFragment extends Fragment {
-
+//My Day
     private FragmentGalleryBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,

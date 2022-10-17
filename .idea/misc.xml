@@ -3,9 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/android studio programs/MyDiary/app/src/main/res/layout/activity_diary.xml" value="0.22826086956521738" />
         <entry key="..\:/android studio programs/MyDiary/app/src/main/res/layout/activity_log_in.xml" value="0.22826086956521738" />
         <entry key="..\:/android studio programs/MyDiary/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
+        <entry key="..\:/android studio programs/MyDiary/app/src/main/res/layout/app_bar_diary.xml" value="0.22826086956521738" />
         <entry key="..\:/android studio programs/MyDiary/app/src/main/res/layout/content_diary.xml" value="0.22826086956521738" />
+        <entry key="..\:/android studio programs/MyDiary/app/src/main/res/layout/fragment_gallery.xml" value="0.22826086956521738" />
+        <entry key="..\:/android studio programs/MyDiary/app/src/main/res/layout/fragment_home.xml" value="0.22826086956521738" />
+        <entry key="..\:/android studio programs/MyDiary/app/src/main/res/layout/fragment_slideshow.xml" value="0.22826086956521738" />
+        <entry key="..\:/android studio programs/MyDiary/app/src/main/res/layout/nav_header_diary.xml" value="0.22826086956521738" />
+        <entry key="..\:/android studio programs/MyDiary/app/src/main/res/layout/qutation_container.xml" value="0.1721311475409836" />
+        <entry key="..\:/android studio programs/MyDiary/app/src/main/res/menu/activity_main4_drawer.xml" value="0.25416666666666665" />
+        <entry key="..\:/android studio programs/MyDiary/app/src/main/res/menu/diary.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>

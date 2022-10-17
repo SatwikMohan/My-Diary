@@ -13,7 +13,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.gigawattstechnology.mydiary.databinding.FragmentHomeBinding;
 
 public class HomeFragment extends Fragment {
-
+// My plans
     private FragmentHomeBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
