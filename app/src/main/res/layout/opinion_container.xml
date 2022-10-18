@@ -1,6 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:background="#FFF3DA">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+<!--    topic- #34FFE5-->
+<!--    solution- #FFF3DA-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/topic_appbar"
+            android:background="#34FFE5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/opinion_container_topic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:text="Topic"
+                android:layout_margin="13dp"
+                android:textAlignment="center"
+                android:textSize="25dp"/>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <TextView
+            android:id="@+id/opinion_container_solution"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/topic_appbar"
+            android:layout_margin="10dp"
+            android:text="Solution"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            />
+        <ImageView
+            android:id="@+id/delete_opinion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/ic_baseline_delete_24"
+            android:layout_below="@id/opinion_container_solution"
+            />
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
