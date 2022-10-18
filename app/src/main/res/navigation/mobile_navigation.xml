@@ -22,4 +22,14 @@
         android:name="com.gigawattstechnology.mydiary.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/nav_opinions"
+        android:name="com.gigawattstechnology.mydiary.ui.Opinions.MyOpinionsFragment"
+        android:label="My Opinions"
+        tools:layout="@layout/fragment_my_opinions" />
+    <fragment
+        android:id="@+id/nav_image_memorial"
+        android:name="com.gigawattstechnology.mydiary.ui.Memorial.MyImageMemorial"
+        android:label="My Image Memorial"
+        tools:layout="@layout/fragment_my_image_memorial" />
 </navigation>

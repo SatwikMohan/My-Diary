@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="Topic:"
+        android:textColor="#FF0000"
+        android:textStyle="bold"
+        android:layout_margin="10dp"/>
+    <EditText
+        android:id="@+id/topic_opinion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textColor="@color/black"
+        android:hint="Enter Topic"
+        android:textColorHint="@color/black"
+        android:textStyle="bold"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="Opinion:"
+        android:textColor="#FF0000"
+        android:textStyle="bold"
+        android:layout_margin="10dp"/>
+    <EditText
+        android:id="@+id/solution_opinion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:hint="Enter Opinion"
+        android:inputType="textMultiLine"
+        android:textStyle="bold"
+        />
+
+
+</LinearLayout>

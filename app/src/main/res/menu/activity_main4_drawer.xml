@@ -12,10 +12,19 @@
             android:id="@+id/nav_gallery"
             android:title="@string/menu_gallery" />
 <!--            android:icon="@drawable/ic_menu_gallery"-->
+        <item
+            android:id="@+id/nav_opinions"
+            android:title="My Opinions" />
+
+        <item
+            android:id="@+id/nav_image_memorial"
+            android:title="Image Memorial" />
+
 
         <item
             android:id="@+id/nav_slideshow"
             android:title="@string/menu_slideshow" />
 <!--        android:icon="@drawable/ic_menu_slideshow"-->
+
     </group>
 </menu>

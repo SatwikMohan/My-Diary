@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -32,6 +33,10 @@ public class QutationAdapter extends RecyclerView.Adapter<QutationAdapter.Recycl
     @Override
     public void onBindViewHolder(@NonNull QutationAdapter.RecyclerViewHolder holder, int position) {
 
+        QutationModal qutationModal=list.get(position);
+        holder.quote.setText(qutationModal.getQ());
+        holder.quote_by.setText(qutationModal.getA());
+
     }
 
     @Override
@@ -40,8 +45,12 @@ public class QutationAdapter extends RecyclerView.Adapter<QutationAdapter.Recycl
     }
 
     public class RecyclerViewHolder extends RecyclerView.ViewHolder {
+        TextView quote;
+        TextView quote_by;
         public RecyclerViewHolder(@NonNull View itemView) {
             super(itemView);
+            quote=itemView.findViewById(R.id.quote);
+            quote_by=itemView.findViewById(R.id.quote_by);
         }
     }
 }

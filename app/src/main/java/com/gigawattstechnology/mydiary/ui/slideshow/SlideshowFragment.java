@@ -10,8 +10,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.gigawattstechnology.mydiary.QutationAdapter;
 import com.gigawattstechnology.mydiary.QutationApiInterface;
 import com.gigawattstechnology.mydiary.QutationModal;
 import com.gigawattstechnology.mydiary.RetrofitInstance;
@@ -29,6 +31,7 @@ public class SlideshowFragment extends Fragment {
     QutationApiInterface qutationApiInterface;
     List<QutationModal> list;
     RecyclerView recyclerView;
+    QutationAdapter qutationAdapter;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         SlideshowViewModel slideshowViewModel =
@@ -37,7 +40,9 @@ public class SlideshowFragment extends Fragment {
         binding = FragmentSlideshowBinding.inflate(inflater, container, false);
         recyclerView= binding.QutationRecyclerView;
         View root = binding.getRoot();
-
+        recyclerView.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(root.getContext());
+        recyclerView.setLayoutManager(linearLayoutManager);
         qutationApiInterface= RetrofitInstance.getRetrofit().create(QutationApiInterface.class);
         qutationApiInterface.getPosts().enqueue(new Callback<List<QutationModal>>() {
             @Override
@@ -45,6 +50,8 @@ public class SlideshowFragment extends Fragment {
 
                 list=response.body();
                 Toast.makeText(root.getContext(), list.get(1).getA(), Toast.LENGTH_SHORT).show();
+                qutationAdapter=new QutationAdapter(root.getContext(),list);
+                recyclerView.setAdapter(qutationAdapter);
             }
 
             @Override

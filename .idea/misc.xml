@@ -10,8 +10,13 @@
         <entry key="..\:/android studio programs/MyDiary/app/src/main/res/layout/content_diary.xml" value="0.22826086956521738" />
         <entry key="..\:/android studio programs/MyDiary/app/src/main/res/layout/fragment_gallery.xml" value="0.22826086956521738" />
         <entry key="..\:/android studio programs/MyDiary/app/src/main/res/layout/fragment_home.xml" value="0.22826086956521738" />
+        <entry key="..\:/android studio programs/MyDiary/app/src/main/res/layout/fragment_my_image_memorial.xml" value="0.25416666666666665" />
+        <entry key="..\:/android studio programs/MyDiary/app/src/main/res/layout/fragment_my_opinions.xml" value="0.22826086956521738" />
         <entry key="..\:/android studio programs/MyDiary/app/src/main/res/layout/fragment_slideshow.xml" value="0.22826086956521738" />
+        <entry key="..\:/android studio programs/MyDiary/app/src/main/res/layout/imagememorial_dialog.xml" value="0.253125" />
         <entry key="..\:/android studio programs/MyDiary/app/src/main/res/layout/nav_header_diary.xml" value="0.22826086956521738" />
+        <entry key="..\:/android studio programs/MyDiary/app/src/main/res/layout/opinion_container.xml" value="0.2076923076923077" />
+        <entry key="..\:/android studio programs/MyDiary/app/src/main/res/layout/opinion_dialog.xml" value="0.22826086956521738" />
         <entry key="..\:/android studio programs/MyDiary/app/src/main/res/layout/qutation_container.xml" value="0.1721311475409836" />
         <entry key="..\:/android studio programs/MyDiary/app/src/main/res/menu/activity_main4_drawer.xml" value="0.25416666666666665" />
         <entry key="..\:/android studio programs/MyDiary/app/src/main/res/menu/diary.xml" value="0.25416666666666665" />

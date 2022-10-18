@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "75781317990",
+    "project_id": "my-diary-1b980",
+    "storage_bucket": "my-diary-1b980.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:75781317990:android:903a55c579d7b931fdd4a7",
+        "android_client_info": {
+          "package_name": "com.gigawattstechnology.mydiary"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "75781317990-d5700u1d879sbjuc7rgghodb7pa509pk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuimUOb1qR6KePUHc2XAMBfURBYZNP6eA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "75781317990-d5700u1d879sbjuc7rgghodb7pa509pk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
