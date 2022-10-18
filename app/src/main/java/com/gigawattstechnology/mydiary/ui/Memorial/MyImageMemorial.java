@@ -8,7 +8,10 @@ import android.os.Bundle;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,13 +25,19 @@ import com.bumptech.glide.Glide;
 import com.cloudinary.android.MediaManager;
 import com.cloudinary.android.callback.ErrorInfo;
 import com.cloudinary.android.callback.UploadCallback;
+import com.gigawattstechnology.mydiary.ImageMemorialAdapter;
+import com.gigawattstechnology.mydiary.ImageMemorialModal;
 import com.gigawattstechnology.mydiary.R;
 import com.gigawattstechnology.mydiary.databinding.FragmentMyImageMemorialBinding;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -37,8 +46,11 @@ public class MyImageMemorial extends Fragment {
 FragmentMyImageMemorialBinding binding;
 DatabaseReference databaseReference;
 ActivityResultLauncher<String> photo;
+ImageMemorialAdapter imageMemorialAdapter;
     Uri selectedImageUri;
     ImageView imageView;
+    RecyclerView recyclerView;
+    ArrayList<ImageMemorialModal> list;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -46,6 +58,7 @@ ActivityResultLauncher<String> photo;
 
         binding=FragmentMyImageMemorialBinding.inflate(inflater,container,false);
         databaseReference= FirebaseDatabase.getInstance().getReference("My Image Memorial");
+        recyclerView=binding.ImageMemorialRecyclerView;
         View root=binding.getRoot();
 
         Map config = new HashMap();
@@ -120,10 +133,6 @@ ActivityResultLauncher<String> photo;
                             }
                         }).dispatch();
 
-
-
-
-
                     }
                 }).setNegativeButton("Discard", new DialogInterface.OnClickListener() {
                     @Override
@@ -134,6 +143,27 @@ ActivityResultLauncher<String> photo;
                 alertDialog.show();
             }
         });
+        recyclerView.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(root.getContext());
+        recyclerView.setLayoutManager(linearLayoutManager);
+        list=new ArrayList<>();
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                list.clear();
+                for(DataSnapshot postSnapshot: snapshot.getChildren()){
+                    list.add(new ImageMemorialModal(postSnapshot.child("Date").getValue(String.class),postSnapshot.child("Status").getValue(String.class),postSnapshot.child("url").getValue(String.class)));
+                }
+                imageMemorialAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        imageMemorialAdapter=new ImageMemorialAdapter(root.getContext(),list);
+        recyclerView.setAdapter(imageMemorialAdapter);
 
         return root;
     }
