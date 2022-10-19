@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/wood_background"
     tools:context=".ViewImage">
 
     <ImageView
@@ -11,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/side_nav_bar"
+        android:layout_margin="20dp"
         />
 
     <ProgressBar

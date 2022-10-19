@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.bson.Document;
 
@@ -61,6 +62,7 @@ public class LogInActivity extends AppCompatActivity {
                     public void onResult(App.Result<User> result) {
                         if(result.isSuccess()){
                             Log.v("user","Logged in ");
+                            Toast.makeText(LogInActivity.this, "Logging In", Toast.LENGTH_SHORT).show();
                             user=app.currentUser();
                             mongoClient=user.getMongoClient("mongodb-atlas");
                             mongoDatabase=mongoClient.getDatabase("MyDiaryDatabase");

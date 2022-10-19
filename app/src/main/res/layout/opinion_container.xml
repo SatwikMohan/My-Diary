@@ -10,7 +10,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="#F5C6A5">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/topic_appbar"
@@ -47,6 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:layout_alignParentEnd="true"
             android:layout_centerHorizontal="true"
             android:src="@drawable/ic_baseline_delete_24"
             android:layout_below="@id/opinion_container_solution"

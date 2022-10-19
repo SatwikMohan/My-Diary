@@ -54,6 +54,7 @@
             android:id="@+id/myPlan_delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
             android:src="@drawable/ic_baseline_delete_24"
             android:layout_below="@id/plan_container_plan"
             android:layout_centerHorizontal="true"

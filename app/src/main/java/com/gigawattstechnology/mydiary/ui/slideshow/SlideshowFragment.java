@@ -49,7 +49,7 @@ public class SlideshowFragment extends Fragment {
             public void onResponse(Call<List<QutationModal>> call, Response<List<QutationModal>> response) {
 
                 list=response.body();
-                Toast.makeText(root.getContext(), list.get(1).getA(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(root.getContext(), list.get(1).getA(), Toast.LENGTH_SHORT).show();
                 qutationAdapter=new QutationAdapter(root.getContext(),list);
                 recyclerView.setAdapter(qutationAdapter);
             }

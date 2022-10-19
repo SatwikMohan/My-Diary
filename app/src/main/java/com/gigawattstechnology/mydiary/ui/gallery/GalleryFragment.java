@@ -86,6 +86,12 @@ public class GalleryFragment extends Fragment {
                 if (list.size()>0){
                     myDayAdapter=new MyDayAdapter(root.getContext(),list);
                     recyclerView.setAdapter(myDayAdapter);
+                    recyclerView.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            recyclerView.smoothScrollToPosition(myDayAdapter.getItemCount());
+                        }
+                    });
                 }
 
             }else{
