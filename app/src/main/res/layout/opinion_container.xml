@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
-    android:background="#FFF3DA">
+    android:background="#F5C6A5">
 
 <!--    topic- #34FFE5-->
 <!--    solution- #FFF3DA-->
@@ -14,7 +14,7 @@
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/topic_appbar"
-            android:background="#34FFE5"
+            android:background="#FF7777"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 

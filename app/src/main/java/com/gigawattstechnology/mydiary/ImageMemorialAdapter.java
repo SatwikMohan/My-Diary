@@ -1,6 +1,8 @@
 package com.gigawattstechnology.mydiary;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
 import java.util.ArrayList;
 
@@ -41,7 +44,10 @@ public class ImageMemorialAdapter extends RecyclerView.Adapter<ImageMemorialAdap
         ImageMemorialModal imageMemorialModal=list.get(position);
         holder.date.setText(imageMemorialModal.getDate());
         holder.status.setText(imageMemorialModal.getStatus());
-        Picasso.get().load(imageMemorialModal.getUrl()).into(holder.imageView);
+        //Picasso.get().load(imageMemorialModal.getUrl()).into(holder.imageView);
+        Picasso.get().load(imageMemorialModal.getUrl())
+                .fit()
+                .into(holder.imageView);
         //Glide.with(context).load(imageMemorialModal.getUrl()).into(holder.imageView);
         //holder.imageView.setImageResource(R.drawable.ic_launcher_background);
     }

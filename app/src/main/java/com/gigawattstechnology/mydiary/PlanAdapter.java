@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -36,7 +37,7 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.RecycleViewHol
         PlanData planData=list.get(position);
         holder.date.setText(planData.Date);
         holder.plan.setText(planData.plan);
-
+        holder.id.setText(""+planData.getID());
     }
 
     @Override
@@ -45,11 +46,25 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.RecycleViewHol
     }
 
     public class RecycleViewHolder extends RecyclerView.ViewHolder {
-        TextView date,plan;
+        TextView date,plan,id;
+        ImageView delete;
         public RecycleViewHolder(@NonNull View itemView) {
             super(itemView);
             date=itemView.findViewById(R.id.plan_container_date);
             plan=itemView.findViewById(R.id.plan_container_plan);
+            id=itemView.findViewById(R.id.plan_container_ID);
+            delete=itemView.findViewById(R.id.myPlan_delete);
+            delete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AppDatabase appDatabase=AppDatabase.getDbInstance(context);
+                    PlanData planData=new PlanData();
+                    planData.ID= Integer.parseInt(id.getText().toString());
+                    planData.Date=date.getText().toString();
+                    planData.plan=plan.getText().toString();
+                    appDatabase.planDao().delete(planData);
+                }
+            });
         }
     }
 }

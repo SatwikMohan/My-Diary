@@ -78,8 +78,6 @@ OpinionAdapter opinionAdapter;
 
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(root.getContext());
-        linearLayoutManager.setReverseLayout(true);
-        linearLayoutManager.setStackFromEnd(true);
         recyclerView.setLayoutManager(linearLayoutManager);
         list=new ArrayList<>();
         databaseReference.addValueEventListener(new ValueEventListener() {

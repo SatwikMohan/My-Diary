@@ -1,23 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:background="@color/white">
+    android:layout_margin="10dp"
+    android:background="#EDDFB3">
 
-    <TextView
-        android:id="@+id/plan_container_date"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:text="date"
-        />
-    <TextView
-        android:id="@+id/plan_container_plan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:text="plan"
-        />
+        android:background="@color/white">
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/plan_container_ID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:layout_below="@id/myplan_appbar"
+            android:text="id"
+            />
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/myplan_appbar"
+            android:layout_width="match_parent"
+            android:background="#781935"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/plan_container_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#FFFFFF"
+                android:textAlignment="center"
+                android:layout_margin="10dp"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:text="date_time"
+                />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <TextView
+            android:id="@+id/plan_container_plan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:layout_below="@id/myplan_appbar"
+            android:textColor="@color/black"
+            android:text="plan"
+            />
+
+        <ImageView
+            android:id="@+id/myPlan_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_delete_24"
+            android:layout_below="@id/plan_container_plan"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"/>
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

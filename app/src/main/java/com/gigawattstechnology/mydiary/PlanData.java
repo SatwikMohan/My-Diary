@@ -16,4 +16,7 @@ public class PlanData {
     @ColumnInfo(name = "PlanText")
     public String plan;
 
+    public int getID() {
+        return ID;
+    }
 }
