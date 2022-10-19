@@ -152,6 +152,7 @@ ImageMemorialAdapter imageMemorialAdapter;
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 list.clear();
                 for(DataSnapshot postSnapshot: snapshot.getChildren()){
+                    //Toast.makeText(root.getContext(), postSnapshot.child("Date").getValue(String.class), Toast.LENGTH_SHORT).show();
                     list.add(new ImageMemorialModal(postSnapshot.child("Date").getValue(String.class),postSnapshot.child("Status").getValue(String.class),postSnapshot.child("url").getValue(String.class)));
                 }
                 imageMemorialAdapter.notifyDataSetChanged();
