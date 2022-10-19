@@ -8,7 +8,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#EDE4E0">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/memorial_container_bar"
@@ -29,11 +30,31 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
+        <TextView
+            android:id="@+id/imageMemorial_url"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:text="url"
+            />
+
+        <Button
+            android:id="@+id/imageMemorial_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/memorial_container_status"
+            android:backgroundTint="#FFFFFF"
+            android:textStyle="bold"
+            android:text="View Image"
+            android:textColor="@color/black"
+            />
+
         <ImageView
             android:id="@+id/memorial_container_image"
             android:layout_width="match_parent"
             android:layout_height="170dp"
             android:src="@drawable/ic_launcher_background"
+            android:visibility="gone"
             android:layout_below="@id/memorial_container_bar"
             android:layout_margin="10dp"
             android:layout_centerHorizontal="true"/>

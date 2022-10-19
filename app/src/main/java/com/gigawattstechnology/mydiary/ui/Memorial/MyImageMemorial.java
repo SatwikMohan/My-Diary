@@ -116,6 +116,7 @@ ImageMemorialAdapter imageMemorialAdapter;
                             @Override
                             public void onSuccess(String requestId, Map resultData) {
                                 url[0] =resultData.get("url").toString();
+                                url[0]="https://res.cloudinary.com/dbgmkskmk/image/fetch/"+url[0];
                                 String key=""+System.currentTimeMillis();
                                 databaseReference.child(key).child("Date").setValue(todayDate);
                                 databaseReference.child(key).child("Status").setValue(text);

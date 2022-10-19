@@ -1,11 +1,13 @@
 package com.gigawattstechnology.mydiary;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -44,10 +46,10 @@ public class ImageMemorialAdapter extends RecyclerView.Adapter<ImageMemorialAdap
         ImageMemorialModal imageMemorialModal=list.get(position);
         holder.date.setText(imageMemorialModal.getDate());
         holder.status.setText(imageMemorialModal.getStatus());
+        holder.url.setText(imageMemorialModal.getUrl());
         //Picasso.get().load(imageMemorialModal.getUrl()).into(holder.imageView);
-        Picasso.get().load(imageMemorialModal.getUrl())
-                .fit()
-                .into(holder.imageView);
+        /*Picasso.with(context).setLoggingEnabled(true);
+        Picasso.with(context).load(imageMemorialModal.getUrl()).error(R.drawable.ic_launcher_foreground).into(holder.imageView);*/
         //Glide.with(context).load(imageMemorialModal.getUrl()).into(holder.imageView);
         //holder.imageView.setImageResource(R.drawable.ic_launcher_background);
     }
@@ -62,6 +64,8 @@ public class ImageMemorialAdapter extends RecyclerView.Adapter<ImageMemorialAdap
         TextView date;
         ImageView imageView;
         TextView status;
+        TextView url;
+        Button viewImage;
 
         public RecycleViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -69,7 +73,16 @@ public class ImageMemorialAdapter extends RecyclerView.Adapter<ImageMemorialAdap
             date=itemView.findViewById(R.id.memorial_container_date);
             imageView=itemView.findViewById(R.id.memorial_container_image);
             status=itemView.findViewById(R.id.memorial_container_status);
-
+            url=itemView.findViewById(R.id.imageMemorial_url);
+            viewImage=itemView.findViewById(R.id.imageMemorial_button);
+            viewImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i=new Intent(context,ViewImage.class);
+                    i.putExtra("url",url.getText().toString());
+                    context.startActivity(i);
+                }
+            });
         }
     }
 }
