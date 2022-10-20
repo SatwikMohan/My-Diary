@@ -15,10 +15,12 @@ import java.util.List;
 public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.RecycleViewHolder> {
     Context context;
     List<PlanData> list;
+    onClickInterface onClickInterface;
 
-    public PlanAdapter(Context context, List<PlanData> list) {
+    public PlanAdapter(Context context, List<PlanData> list, com.gigawattstechnology.mydiary.onClickInterface onClickInterface) {
         this.context = context;
         this.list = list;
+        this.onClickInterface=onClickInterface;
     }
     @Override
     public int getItemViewType(final int position) {
@@ -63,6 +65,7 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.RecycleViewHol
                     planData.Date=date.getText().toString();
                     planData.plan=plan.getText().toString();
                     appDatabase.planDao().delete(planData);
+                    onClickInterface.onItemClick(getAdapterPosition());
                 }
             });
         }

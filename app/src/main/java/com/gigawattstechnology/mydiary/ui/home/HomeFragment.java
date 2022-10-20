@@ -30,6 +30,7 @@ import com.gigawattstechnology.mydiary.PlanDao;
 import com.gigawattstechnology.mydiary.PlanData;
 import com.gigawattstechnology.mydiary.R;
 import com.gigawattstechnology.mydiary.databinding.FragmentHomeBinding;
+import com.gigawattstechnology.mydiary.onClickInterface;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -40,7 +41,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements onClickInterface {
 // My plans
     private FragmentHomeBinding binding;
     RecyclerView recyclerView;
@@ -110,7 +111,7 @@ public class HomeFragment extends Fragment {
                         appDatabase.planDao().InsertPlan(planData);
                         list.clear();
                         list=appDatabase.planDao().getAllPlans();
-                        planAdapter=new PlanAdapter(root.getContext(),list);
+                        planAdapter=new PlanAdapter(root.getContext(),list, HomeFragment.this);
                         recyclerView.setAdapter(planAdapter);
 
 
@@ -126,7 +127,7 @@ public class HomeFragment extends Fragment {
         });
 
         if(list.size()>0){
-            planAdapter=new PlanAdapter(root.getContext(),list);
+            planAdapter=new PlanAdapter(root.getContext(),list, HomeFragment.this);
             recyclerView.setAdapter(planAdapter);
         }
 
@@ -138,5 +139,12 @@ public class HomeFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        list.remove(position);
+        planAdapter=new PlanAdapter(getContext(),list, HomeFragment.this);
+        recyclerView.setAdapter(planAdapter);
     }
 }
