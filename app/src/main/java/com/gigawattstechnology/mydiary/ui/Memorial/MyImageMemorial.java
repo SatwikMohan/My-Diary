@@ -25,6 +25,7 @@ import com.bumptech.glide.Glide;
 import com.cloudinary.android.MediaManager;
 import com.cloudinary.android.callback.ErrorInfo;
 import com.cloudinary.android.callback.UploadCallback;
+import com.gigawattstechnology.mydiary.CloudinaryConfig;
 import com.gigawattstechnology.mydiary.ImageMemorialAdapter;
 import com.gigawattstechnology.mydiary.ImageMemorialModal;
 import com.gigawattstechnology.mydiary.R;
@@ -41,7 +42,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 public class MyImageMemorial extends Fragment {
 FragmentMyImageMemorialBinding binding;
@@ -69,6 +69,7 @@ ImageMemorialAdapter imageMemorialAdapter;
 
         View root=binding.getRoot();
 
+       // Toast.makeText(requireContext(), "2", Toast.LENGTH_SHORT).show();
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(root.getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
@@ -78,6 +79,7 @@ ImageMemorialAdapter imageMemorialAdapter;
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 list.clear();
                 for(DataSnapshot postSnapshot: snapshot.getChildren()){
+                    //Toast.makeText(requireContext(), "3", Toast.LENGTH_SHORT).show();
                     //Toast.makeText(root.getContext(), postSnapshot.child("Date").getValue(String.class), Toast.LENGTH_SHORT).show();
                     list.add(new ImageMemorialModal(postSnapshot.child("Date").getValue(String.class),postSnapshot.child("Status").getValue(String.class),postSnapshot.child("url").getValue(String.class)));
                 }
@@ -91,6 +93,8 @@ ImageMemorialAdapter imageMemorialAdapter;
         });
         imageMemorialAdapter = new ImageMemorialAdapter(root.getContext(), list);
         recyclerView.setAdapter(imageMemorialAdapter);
+
+       // Toast.makeText(requireContext(), "4", Toast.LENGTH_SHORT).show();
 
         photo=registerForActivityResult(new ActivityResultContracts.GetContent(), new ActivityResultCallback<Uri>() {
             @Override

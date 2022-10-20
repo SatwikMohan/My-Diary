@@ -11,7 +11,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.cloudinary.android.MediaManager;
+
 import org.bson.Document;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import io.realm.Realm;
 import io.realm.mongodb.App;
