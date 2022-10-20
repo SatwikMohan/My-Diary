@@ -3,6 +3,7 @@ package com.gigawattstechnology.mydiary.ui.home;
 import android.app.AlertDialog;
 import android.app.DownloadManager;
 import android.content.DialogInterface;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -58,6 +60,8 @@ public class HomeFragment extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
         AppDatabase appDatabase=AppDatabase.getDbInstance(root.getContext());
         list=appDatabase.planDao().getAllPlans();
+
+
         RequestQueue requestQueue;
         requestQueue= Volley.newRequestQueue(root.getContext());
         JsonArrayRequest jsonArrayRequest=new JsonArrayRequest(Request.Method.GET, "https://zenquotes.io/api/today",
@@ -104,7 +108,10 @@ public class HomeFragment extends Fragment {
                         planData.Date=planDate;
                         planData.plan=plan;
                         appDatabase.planDao().InsertPlan(planData);
-                        planAdapter.notifyDataSetChanged();
+                        list.clear();
+                        list=appDatabase.planDao().getAllPlans();
+                        planAdapter=new PlanAdapter(root.getContext(),list);
+                        recyclerView.setAdapter(planAdapter);
 
 
                     }
