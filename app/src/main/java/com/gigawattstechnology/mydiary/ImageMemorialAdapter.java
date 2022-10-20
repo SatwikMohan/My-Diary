@@ -71,10 +71,9 @@ public class ImageMemorialAdapter extends RecyclerView.Adapter<ImageMemorialAdap
             super(itemView);
 
             date=itemView.findViewById(R.id.memorial_container_date);
-            imageView=itemView.findViewById(R.id.memorial_container_image);
             status=itemView.findViewById(R.id.memorial_container_status);
-            url=itemView.findViewById(R.id.imageMemorial_url);
-            viewImage=itemView.findViewById(R.id.imageMemorial_button);
+            url=itemView.findViewById(R.id.imageMemorial_container_url);
+            viewImage=itemView.findViewById(R.id.imageMemorial_container_button);
             viewImage.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

@@ -41,6 +41,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class MyImageMemorial extends Fragment {
 FragmentMyImageMemorialBinding binding;
@@ -52,22 +53,44 @@ ImageMemorialAdapter imageMemorialAdapter;
     RecyclerView recyclerView;
     ArrayList<ImageMemorialModal> list;
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-
-        binding=FragmentMyImageMemorialBinding.inflate(inflater,container,false);
-        databaseReference= FirebaseDatabase.getInstance().getReference("My Image Memorial");
-        recyclerView=binding.ImageMemorialRecyclerView;
-        View root=binding.getRoot();
 
         Map config = new HashMap();
         config.put("cloud_name", "dbgmkskmk");
         config.put("api_key","757922249274476");
         config.put("api_secret","vONW2OphHLSaY-eDlZpe74cbuZU");
         config.put("secure", true);
-        MediaManager.init(root.getContext(),config);
+        MediaManager.init(requireContext(),config);
 
+        binding=FragmentMyImageMemorialBinding.inflate(inflater,container,false);
+        databaseReference= FirebaseDatabase.getInstance().getReference("My Image Memorial");
+        recyclerView=binding.ImageMemorialRecyclerView;
+
+        View root=binding.getRoot();
+
+        recyclerView.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(root.getContext());
+        recyclerView.setLayoutManager(linearLayoutManager);
+        list=new ArrayList<>();
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                list.clear();
+                for(DataSnapshot postSnapshot: snapshot.getChildren()){
+                    //Toast.makeText(root.getContext(), postSnapshot.child("Date").getValue(String.class), Toast.LENGTH_SHORT).show();
+                    list.add(new ImageMemorialModal(postSnapshot.child("Date").getValue(String.class),postSnapshot.child("Status").getValue(String.class),postSnapshot.child("url").getValue(String.class)));
+                }
+                imageMemorialAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        imageMemorialAdapter = new ImageMemorialAdapter(root.getContext(), list);
+        recyclerView.setAdapter(imageMemorialAdapter);
 
         photo=registerForActivityResult(new ActivityResultContracts.GetContent(), new ActivityResultCallback<Uri>() {
             @Override
@@ -99,8 +122,6 @@ ImageMemorialAdapter imageMemorialAdapter;
                         final String[] url = new String[1];
                         String todayDate=date.getText().toString();
                         String text=status.getText().toString();
-
-
 
                         MediaManager.get().upload(selectedImageUri).callback(new UploadCallback() {
                             @Override
@@ -144,29 +165,14 @@ ImageMemorialAdapter imageMemorialAdapter;
                 alertDialog.show();
             }
         });
-        recyclerView.setHasFixedSize(true);
-        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(root.getContext());
-        recyclerView.setLayoutManager(linearLayoutManager);
-        list=new ArrayList<>();
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                list.clear();
-                for(DataSnapshot postSnapshot: snapshot.getChildren()){
-                    //Toast.makeText(root.getContext(), postSnapshot.child("Date").getValue(String.class), Toast.LENGTH_SHORT).show();
-                    list.add(new ImageMemorialModal(postSnapshot.child("Date").getValue(String.class),postSnapshot.child("Status").getValue(String.class),postSnapshot.child("url").getValue(String.class)));
-                }
-                imageMemorialAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-        imageMemorialAdapter=new ImageMemorialAdapter(root.getContext(),list);
-        recyclerView.setAdapter(imageMemorialAdapter);
 
         return root;
     }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
+    }
+
 }

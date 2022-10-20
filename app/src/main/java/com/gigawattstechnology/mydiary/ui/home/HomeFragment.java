@@ -104,6 +104,7 @@ public class HomeFragment extends Fragment {
                         planData.Date=planDate;
                         planData.plan=plan;
                         appDatabase.planDao().InsertPlan(planData);
+                        planAdapter.notifyDataSetChanged();
 
 
                     }

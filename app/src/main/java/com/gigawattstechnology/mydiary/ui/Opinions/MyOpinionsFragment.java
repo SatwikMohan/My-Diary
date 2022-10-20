@@ -100,4 +100,11 @@ OpinionAdapter opinionAdapter;
 
         return root;
     }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
+    }
+
 }
